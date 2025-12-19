@@ -1,6 +1,6 @@
+# Implementation of Fuzzy Logic Operations
+
 import numpy as np
-import matplotlib.pyplot as plt
-import skfuzzy as fuzz
 
 # return a new array where each element is the max of the two sets
 # i.e. [max(a[0], b[0]), max(a[1], b[1]), ..., max(a[n], b[n])]
@@ -48,23 +48,21 @@ def main():
     print('fuzzy complement (NOT B)')
     print(f'operation: 1 - mu_b(x): {not_b}')
     return None
-    x = np.linspace(0, 10, 101)
-    low = fuzz.trimf(x, [0, 0, 5])
-    med = fuzz.trimf(x, [2.5, 5, 7.5])
-    high = fuzz.trimf(x, [5, 10, 10])
-    union = np.fmax(low, med)
-    intersection = np.fmax(med, high)
-    complement = 1 - low
-    plt.plot(x, low, label='Low')
-    plt.plot(x, med, label='Medium')
-    plt.plot(x, high, label='High')
-    plt.plot(x, union, '--', label='Union(Low, Medium)')
-    plt.plot(x, intersection, ':', label='Intersection(Medium, High)')
-    plt.plot(x, complement, '-.', label='Complement(High)')
-    plt.legend()
-    plt.title('Fuzzy Set Operations')
-    plt.show()
-    return None
 
 if __name__ == '__main__':
     main()
+
+# OUTPUT
+
+# universe of discourse (U): [1 2 3 4 5]
+# original sets
+# fuzzy set A: [1.  0.8 0.4 0.1 0. ]
+# fuzzy set B: [0.  0.1 0.3 0.7 1. ]
+# fuzzy union (A OR B)
+# operation: max(mu_a(x), mu_b(x)) = [1.  0.8 0.4 0.7 1. ]
+# fuzzy intersection (A AND B)
+# operation: min(mu_a(x), mu_b(x)) = [0.  0.1 0.3 0.1 0. ]
+# fuzzy complement (NOT A)
+# operation: 1 - mu_a(x): [0.  0.2 0.6 0.9 1. ]
+# fuzzy complement (NOT B)
+# operation: 1 - mu_b(x): [1.  0.9 0.7 0.3 0. ]
