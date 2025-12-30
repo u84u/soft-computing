@@ -78,3 +78,12 @@ if __name__ == '__main__':
 
     # Run the demonstration
     demonstrate_defuzzification(X, aggregated_mf)
+
+# OUTPUT
+
+# --- Defuzzification Results ---
+# Centroid (CoG):        12.4075
+# Bisector (BoA):        13.4457
+# Mean of Maximum (MoM): 15.0000
+# Smallest of Max (SoM): 15.0000
+# Largest of Max (SoM):  15.0000
